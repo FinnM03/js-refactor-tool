@@ -1,0 +1,26 @@
+{
+  "name": "js-refactor-tool",
+  "displayName": "PwC JS Refactor Tool",
+  "description": "A VS Code extension to help refactor JavaScript code.",
+  "version": "1.0.0",
+  "main": "extension.js",
+  "scripts": {},
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "js-refactor.run",
+        "title": "PwC Refactor: Analyse JS Code"
+      }
+    ]
+  },
+  "dependencies": {
+    "@babel/parser": "^7.27.0",
+    "@babel/traverse": "^7.27.0",
+    "eslint": "^9.24.0",
+    "vscode": "^1.1.37"
+  }
+}
