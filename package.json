@@ -13,7 +13,7 @@
     "commands": [
       {
         "command": "js-refactor.run",
-        "title": "PwC Refactor: Analyse JS Code"
+        "title": "🔧 PwC Refactor: Analyse JS Code"
       }
     ]
   },
