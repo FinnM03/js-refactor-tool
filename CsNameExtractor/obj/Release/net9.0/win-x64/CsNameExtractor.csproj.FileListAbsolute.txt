@@ -1,0 +1,15 @@
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\bin\Release\net9.0\win-x64\CsNameExtractor.exe
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\bin\Release\net9.0\win-x64\CsNameExtractor.deps.json
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\bin\Release\net9.0\win-x64\CsNameExtractor.runtimeconfig.json
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\bin\Release\net9.0\win-x64\CsNameExtractor.dll
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\bin\Release\net9.0\win-x64\CsNameExtractor.pdb
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.AssemblyInfoInputs.cache
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.AssemblyInfo.cs
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.csproj.CoreCompileInputs.cache
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.sourcelink.json
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.dll
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\refint\CsNameExtractor.dll
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.pdb
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\CsNameExtractor.genruntimeconfig.cache
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\CsNameExtractor\obj\Release\net9.0\win-x64\ref\CsNameExtractor.dll
