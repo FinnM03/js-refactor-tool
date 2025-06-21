@@ -241,6 +241,9 @@ async function run(context) {
       await vscode.workspace.applyEdit(edit);
       await document.save();
       totalApplied = found.length;
+      await vscode.commands.executeCommand(
+        "workbench.action.closeActiveEditor"
+      );
     } catch {
       vscode.window.showErrorMessage("❌ Failed to apply changes.");
     }
@@ -292,6 +295,7 @@ async function run(context) {
         vscode.window.showErrorMessage("❌ Failed to apply changes.");
       }
     }
+    await vscode.commands.executeCommand("workbench.action.closeActiveEditor");
   }
 
   const totalSkipped = found.length - totalApplied;
