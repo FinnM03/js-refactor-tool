@@ -1,0 +1,5 @@
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\utils\CsNameExtractor.exe
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\utils\CsNameExtractor.dll
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\utils\CsNameExtractor.deps.json
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\utils\CsNameExtractor.runtimeconfig.json
+D:\Users\finnm\OneDrive\Desktop\js-refactor-tool\utils\CsNameExtractor.pdb
