@@ -1,1 +1,1 @@
-# PwC JavaScript Refactoring Tool
+# PwC Code Refactoring Tool
