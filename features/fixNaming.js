@@ -18,7 +18,7 @@ function detectPreferredStyleFromLanguage(languageId, fileName = "") {
   if (languageId === "python" || ext === "py") return "🐍 snake_case";
   if (["java", "csharp", "c++", "cpp", "cs"].includes(languageId))
     return "🔠 PascalCase";
-  return "👫 camelCase";
+  return "🐫 camelCase";
 }
 
 function extractPythonNames(filePath) {
