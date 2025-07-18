@@ -64,7 +64,7 @@ async function runLintErrors() {
 
   if (!hasConfig) {
     return vscode.window.showWarningMessage(
-      "⚠️ ESLint config not found. Please follow the [Lint Errors setup guide](LINK TO GITHUB REPO REQUIRED, LINK TO CORRECT SECTION) in the README."
+      "⚠️ ESLint config not found. Please follow the Lint for Errors Setup guide in the README."
     );
   }
 
