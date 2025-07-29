@@ -119,7 +119,19 @@ async function runFixNaming(context) {
 
   function shouldSkipRename(name, style) {
     const shortCommonNames = new Set([
-      "sum", "avg", "max", "min", "val", "num", "idx", "len", "row", "col", "tmp", "res", "obj"
+      "sum",
+      "avg",
+      "max",
+      "min",
+      "val",
+      "num",
+      "idx",
+      "len",
+      "row",
+      "col",
+      "tmp",
+      "res",
+      "obj",
     ]);
 
     const isSingleWord = /^[a-z]+$/.test(name); // no underscores or caps
@@ -141,7 +153,11 @@ async function runFixNaming(context) {
 
     for (const name of names) {
       const suggestion = toStyle(name);
-      if (!isStyle(name) && name !== suggestion && !shouldSkipRename(name, namingStyle)) {
+      if (
+        !isStyle(name) &&
+        name !== suggestion &&
+        !shouldSkipRename(name, namingStyle)
+      ) {
         found.push({ original: name, suggestion });
       }
     }
@@ -151,7 +167,11 @@ async function runFixNaming(context) {
 
     for (const name of names) {
       const suggestion = toStyle(name);
-      if (!isStyle(name) && name !== suggestion && !shouldSkipRename(name, namingStyle)) {
+      if (
+        !isStyle(name) &&
+        name !== suggestion &&
+        !shouldSkipRename(name, namingStyle)
+      ) {
         found.push({ original: name, suggestion });
       }
     }
@@ -184,7 +204,11 @@ async function runFixNaming(context) {
       VariableDeclarator(path) {
         const name = path.node.id.name;
         const suggestion = toStyle(name);
-        if (!isStyle(name) && name !== suggestion && !shouldSkipRename(name, namingStyle)) {
+        if (
+          !isStyle(name) &&
+          name !== suggestion &&
+          !shouldSkipRename(name, namingStyle)
+        ) {
           const allBindings = new Set([...scopeStack.flat()]);
           if (!allBindings.has(suggestion)) {
             found.push({ original: name, suggestion });
@@ -195,7 +219,11 @@ async function runFixNaming(context) {
         const name = path.node.id?.name;
         if (!name) return;
         const suggestion = toStyle(name);
-        if (!isStyle(name) && name !== suggestion && !shouldSkipRename(name, namingStyle)) {
+        if (
+          !isStyle(name) &&
+          name !== suggestion &&
+          !shouldSkipRename(name, namingStyle)
+        ) {
           const allBindings = new Set([...scopeStack.flat()]);
           if (!allBindings.has(suggestion)) {
             found.push({ original: name, suggestion });
