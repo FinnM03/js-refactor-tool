@@ -109,7 +109,6 @@ function extractFunctionMetrics(path) {
       ) {
         currentNesting++;
         nesting = Math.max(nesting, currentNesting);
-        // FIX: Increment complexity for each branch statement
         if (
           subPath.isIfStatement() ||
           subPath.isForStatement() ||
@@ -284,7 +283,6 @@ function analyseCodeStructure(ast, code, lines) {
   }
 
   // 6. Comment Density
-  // FIX: Only add Low Comment Density if there is at least one function or comment in the code
   if (
     parseFloat(commentDensity) < 20 &&
     (functions.length > 0 ||

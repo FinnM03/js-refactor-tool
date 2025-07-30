@@ -1,4 +1,4 @@
-const { run } = require("../../features/lintErrors");
+const { run } = require("../../features/lintErrors.js");
 const fs = require("fs");
 const { ESLint } = require("eslint");
 
