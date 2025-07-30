@@ -134,16 +134,15 @@ async function runFixNaming(context) {
       "obj",
     ]);
 
-    const isSingleWord = /^[a-z]+$/.test(name); // no underscores or caps
+    const isSingleWord = /^[a-z]+$/.test(name); // No underscores or caps
     const isShort = name.length <= 4;
     const isCommon = shortCommonNames.has(name.toLowerCase());
 
-    // Skip these only for PascalCase
+    // Skip short/common one-word names for PascalCase
     if (style.includes("Pascal")) {
       return isSingleWord && isShort && isCommon;
     }
 
-    // Still skip short/common one-word names for camelCase or snake_case
     return isSingleWord && isShort && isCommon;
   }
 
@@ -163,7 +162,7 @@ async function runFixNaming(context) {
     }
   } else if (languageId === "csharp" || filePath.endsWith(".cs")) {
     const names = extractCSharpNames(filePath);
-    if (!names || names.length === 0) return; // Exit if names couldn't be extracted
+    if (!names || names.length === 0) return;
 
     for (const name of names) {
       const suggestion = toStyle(name);

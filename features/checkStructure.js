@@ -64,7 +64,6 @@ async function exportPdf(fileUri, htmlContent) {
 
   const reportsDir = path.join(workspacePath, "structure-reports");
 
-  // Ensure the directory exists
   if (!fs.existsSync(reportsDir)) {
     fs.mkdirSync(reportsDir, { recursive: true });
   }
