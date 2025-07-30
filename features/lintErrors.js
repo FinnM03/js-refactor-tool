@@ -106,7 +106,6 @@ async function runLintErrors() {
       "Cancel"
     );
 
-    // Close diff tabs
     await vscode.commands.executeCommand("workbench.action.closeActiveEditor");
     await vscode.commands.executeCommand("workbench.action.closeActiveEditor");
 
