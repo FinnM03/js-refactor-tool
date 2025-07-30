@@ -11,7 +11,7 @@ const {
   toCamelCase,
   toPascalCase,
   toSnakeCase,
-} = require("../utils/namingUtils");
+} = require("../utils/namingUtils.js");
 
 function detectPreferredStyleFromLanguage(languageId, fileName = "") {
   const ext = fileName.split(".").pop().toLowerCase();
