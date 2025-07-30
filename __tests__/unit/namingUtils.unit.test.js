@@ -5,7 +5,7 @@ const {
   toPascalCase,
   isSnakeCase,
   toSnakeCase,
-} = require("../../utils/namingUtils");
+} = require("../../utils/namingUtils.js");
 
 describe("namingUtils", () => {
   // isCamelCase

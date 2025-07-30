@@ -57,7 +57,7 @@ jest.mock("../../utils/namingUtils", () => ({
   toSnakeCase: (str) => (str === "GoodName" ? "bad_name" : str),
 }));
 
-const { run } = require("../../features/fixNaming");
+const { run } = require("../../features/fixNaming.js");
 
 describe("runFixNaming", () => {
   beforeEach(() => {
