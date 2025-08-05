@@ -41,15 +41,18 @@ jest.mock("vscode", () => ({
   },
 }));
 
-jest.mock("puppeteer", () => ({
-  launch: jest.fn().mockResolvedValue({
-    newPage: jest.fn().mockResolvedValue({
-      setContent: jest.fn(),
-      pdf: jest.fn(),
-    }),
-    close: jest.fn(),
-  }),
-}));
+jest.mock("puppeteer", () => {
+  const setContent = jest.fn().mockResolvedValue();
+  const pdf = jest.fn().mockResolvedValue();
+  const evaluate = jest.fn().mockResolvedValue();
+  const newPage = jest.fn().mockResolvedValue({ setContent, evaluate, pdf });
+  const close = jest.fn().mockResolvedValue();
+
+  return {
+    launch: jest.fn().mockResolvedValue({ newPage, close }),
+    __mocks__: { setContent, evaluate, pdf, newPage, close },
+  };
+});
 
 const vscode = require("vscode");
 const fs = require("fs");
@@ -244,15 +247,21 @@ describe("checkStructure integration", () => {
     expect(result.longFunctions.some((f) => f.name === "Longy")).toBe(true);
     expect(result.highComplexity.some((f) => f.name === "Complexo")).toBe(true);
     expect(result.untestable.some((f) => f.name === "SideEffector")).toBe(true);
-    expect(result.observations).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining("Length Concerns"),
-        expect.stringContaining("cyclomatic complexity"),
-        expect.stringContaining("Testability Issues"),
-        expect.stringContaining("Redundant Logic"),
-        expect.stringContaining("Low Comment Density"),
-      ])
-    );
+
+    const expectedObservations = [
+      "Length Concerns",
+      "Complex Logic",
+      "Testability Issues",
+      "Redundant Logic",
+      "Low Comment Density",
+      "Documentation Gaps",
+    ];
+
+    expectedObservations.forEach((expected) => {
+      expect(result.observations.some((obs) => obs.includes(expected))).toBe(
+        true
+      );
+    });
   });
 
   it("builds HTML with all report types listed", () => {

@@ -14,7 +14,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "js-refactor.run",
+        "command": "pwc-refactor.run",
         "title": "🔧 PwC Refactor: Analyse Code"
       }
     ]
