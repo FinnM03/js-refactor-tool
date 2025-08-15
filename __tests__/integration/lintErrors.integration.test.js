@@ -298,14 +298,13 @@ describe("Publishes diagnostics and disposes preview provider", () => {
   };
 
   beforeEach(() => {
-    jest.resetModules(); // important: so our doMock'd modules are used
+    jest.resetModules();
     jest.clearAllMocks();
   });
 
   it("shows 'No lint fixes needed!' and publishes diagnostics when ESLint returns only messages", async () => {
     const vscode = makeVscodeMock();
 
-    // Active editor + doc
     const doc = {
       isUntitled: false,
       isDirty: false,
@@ -321,18 +320,16 @@ describe("Publishes diagnostics and disposes preview provider", () => {
     vscode.window.activeTextEditor = { document: doc };
     vscode.workspace.openTextDocument.mockResolvedValue(doc);
 
-    // Mock modules for THIS test only
     jest.doMock("vscode", () => vscode, { virtual: true });
     jest.doMock(
       "fs",
       () => ({ existsSync: () => true, readFileSync: jest.fn() }),
       { virtual: true }
     );
-    // Use the real Node 'path' (no mock!)
 
     const lintText = jest.fn().mockResolvedValue([
       {
-        output: null, // no textual fix
+        output: null,
         messages: [
           {
             line: 1,
@@ -359,12 +356,10 @@ describe("Publishes diagnostics and disposes preview provider", () => {
     const { run } = require("../../features/lintErrors.js");
     await run();
 
-    // No-output message
     expect(vscode.window.showInformationMessage).toHaveBeenCalledWith(
       "✅ No lint fixes needed!"
     );
 
-    // Diagnostics published correctly
     const { diagCollection } = vscode.__internals;
     expect(diagCollection.set).toHaveBeenCalledTimes(1);
     const [uriArg, diags] = diagCollection.set.mock.calls[0];
@@ -373,8 +368,8 @@ describe("Publishes diagnostics and disposes preview provider", () => {
     );
     expect(diags).toHaveLength(1);
     expect(diags[0].code).toBe("eqeqeq");
-    expect(diags[0].severity).toBe(0); // Error
-    expect(diags[0].range.start).toEqual({ line: 0, character: 3 }); // 0-based mapping
+    expect(diags[0].severity).toBe(0);
+    expect(diags[0].range.start).toEqual({ line: 0, character: 3 });
     expect(diags[0].range.end).toEqual({ line: 0, character: 5 });
   });
 
@@ -396,10 +391,8 @@ describe("Publishes diagnostics and disposes preview provider", () => {
     vscode.window.activeTextEditor = { document: doc };
     vscode.workspace.openTextDocument.mockResolvedValue(doc);
 
-    // User accepts the diff
     vscode.window.showInformationMessage.mockResolvedValueOnce("Apply & Save");
 
-    // 1st lint -> output (fix), 2nd lint -> messages (to hit diagnostics again)
     const lintText = jest
       .fn()
       .mockResolvedValueOnce([{ output: "const x = 1 + 2;", messages: [] }])
@@ -426,7 +419,6 @@ describe("Publishes diagnostics and disposes preview provider", () => {
       () => ({ existsSync: () => true, readFileSync: jest.fn() }),
       { virtual: true }
     );
-    // Use real 'path' here as well
     jest.doMock(
       "eslint",
       () => ({
@@ -440,7 +432,6 @@ describe("Publishes diagnostics and disposes preview provider", () => {
     const { run } = require("../../features/lintErrors.js");
     await run();
 
-    // Diff command invoked
     expect(vscode.commands.executeCommand).toHaveBeenCalledWith(
       "vscode.diff",
       expect.anything(),
@@ -448,24 +439,21 @@ describe("Publishes diagnostics and disposes preview provider", () => {
       "Lint Fix Preview"
     );
 
-    // Provider disposed after diff
     const { providerDisposable } = vscode.__internals;
     expect(providerDisposable.dispose).toHaveBeenCalledTimes(1);
 
-    // Edits applied + success message
     expect(vscode.workspace.applyEdit).toHaveBeenCalled();
     expect(doc.save).toHaveBeenCalled();
     expect(vscode.window.showInformationMessage).toHaveBeenCalledWith(
       "✅ ESLint fixes applied!"
     );
 
-    // Diagnostics republished on second lint
     const { diagCollection } = vscode.__internals;
     expect(diagCollection.set).toHaveBeenCalledTimes(2);
     const lastCall = diagCollection.set.mock.calls.at(-1);
     const [, diags] = lastCall;
     expect(diags).toHaveLength(1);
     expect(diags[0].code).toBe("no-console");
-    expect(diags[0].severity).toBe(1); // Warning
+    expect(diags[0].severity).toBe(1);
   });
 });
